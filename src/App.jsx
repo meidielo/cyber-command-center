@@ -5,10 +5,10 @@ import Auth from './Auth';
 
 const mono = "'JetBrains Mono', 'Fira Code', monospace";
 const sans = "'Space Grotesk', sans-serif";
-const cardBg = "rgba(255,255,255,0.02)";
-const cardBorder = "rgba(255,255,255,0.06)";
-const dim = "rgba(255,255,255,0.3)";
-const dimmer = "rgba(255,255,255,0.15)";
+const cardBg = "rgba(255,255,255,0.03)";
+const cardBorder = "rgba(255,255,255,0.1)";
+const dim = "rgba(255,255,255,0.55)";
+const dimmer = "rgba(255,255,255,0.35)";
 const accent = "#00ffc8";
 
 function fmt(s) {
@@ -73,7 +73,7 @@ function StudyTimer({ onSessionEnd }) {
       borderRadius: 12, padding: 20, marginBottom: 16, transition: "border-color 0.3s",
     }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
-        <div style={{ fontSize: 11, fontFamily: mono, color: accent, letterSpacing: "0.15em" }}>STUDY TIMER</div>
+        <div style={{ fontSize: 12, fontFamily: mono, color: accent, letterSpacing: "0.15em" }}>STUDY TIMER</div>
         {running && <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#ff2d6b", animation: "pulse-glow 1.5s ease-in-out infinite" }} />}
       </div>
       <div style={{ textAlign: "center", marginBottom: 16 }}>
@@ -133,8 +133,8 @@ function DailyLog({ logs, isOpen, onToggle }) {
         padding: "20px 24px", cursor: "pointer", userSelect: "none",
       }}>
         <div>
-          <div style={{ fontSize: 11, fontFamily: mono, color: "#ff6b35", letterSpacing: "0.15em", marginBottom: 4 }}>TRAINING LOG</div>
-          <div style={{ fontSize: 13, fontFamily: sans, color: dim }}>
+          <div style={{ fontSize: 12, fontFamily: mono, color: "#ff6b35", letterSpacing: "0.15em", marginBottom: 4 }}>TRAINING LOG</div>
+          <div style={{ fontSize: 14, fontFamily: sans, color: dim }}>
             {sortedDates.length} days · {totalHrs}h total · {streakDays} day streak
           </div>
         </div>
@@ -183,18 +183,18 @@ function TaskItem({ task, done, onToggle, note, onNoteChange }) {
         </div>
         <div style={{ flex: 1 }}>
           <span style={{
-            color: done ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.85)",
-            textDecoration: done ? "line-through" : "none", fontSize: 14, lineHeight: 1.5, fontFamily: sans, transition: "color 0.2s",
+            color: done ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.9)",
+            textDecoration: done ? "line-through" : "none", fontSize: 15, lineHeight: 1.5, fontFamily: sans, transition: "color 0.2s",
           }}>{task.label}</span>
           {task.link && (
             <a href={task.link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
-              style={{ display: "inline-block", marginLeft: 8, color: accent, fontSize: 11, textDecoration: "none", opacity: 0.7, fontFamily: mono }}>
+              style={{ display: "inline-block", marginLeft: 8, color: accent, fontSize: 12, textDecoration: "none", opacity: 0.8, fontFamily: mono }}>
               {"\u2197"} LINK
             </a>
           )}
-          {task.hours > 0 && <span style={{ display: "inline-block", marginLeft: 8, color: dimmer, fontSize: 11, fontFamily: mono }}>~{task.hours}h</span>}
+          {task.hours > 0 && <span style={{ display: "inline-block", marginLeft: 8, color: dimmer, fontSize: 12, fontFamily: mono }}>~{task.hours}h</span>}
           <button onClick={(e) => { e.stopPropagation(); setShowNote(!showNote); }}
-            style={{ display: "inline-block", marginLeft: 8, background: "none", border: "none", color: note ? "#a855f7" : dimmer, fontSize: 11, fontFamily: mono, cursor: "pointer", padding: 0 }}>
+            style={{ display: "inline-block", marginLeft: 8, background: "none", border: "none", color: note ? "#a855f7" : dimmer, fontSize: 12, fontFamily: mono, cursor: "pointer", padding: 0 }}>
             {note ? "\u270E notes" : "+ note"}
           </button>
         </div>
@@ -204,8 +204,8 @@ function TaskItem({ task, done, onToggle, note, onNoteChange }) {
           <textarea value={note || ""} onChange={(e) => onNoteChange(task.id, e.target.value)}
             onClick={(e) => e.stopPropagation()} placeholder="Notes, commands, flags, findings..."
             rows={3} style={{
-              width: "100%", background: "rgba(168,85,247,0.05)", border: "1px solid rgba(168,85,247,0.15)",
-              borderRadius: 6, padding: "8px 10px", color: "rgba(255,255,255,0.8)", fontSize: 12,
+              width: "100%", background: "rgba(168,85,247,0.06)", border: "1px solid rgba(168,85,247,0.2)",
+              borderRadius: 8, padding: "10px 12px", color: "rgba(255,255,255,0.85)", fontSize: 13,
               fontFamily: mono, lineHeight: 1.6, outline: "none", resize: "vertical",
             }} />
         </div>
@@ -232,12 +232,12 @@ function PhaseCard({ phase, progress, notes, onToggleTask, onNoteChange, isOpen,
           <div style={{ marginBottom: 4 }}>
             <span style={{ color: phase.color, fontFamily: mono, fontWeight: 800, letterSpacing: "0.04em" }}>{phase.title}</span>
           </div>
-          <div style={{ color: dim, fontSize: 13, fontFamily: sans }}>{phase.subtitle}</div>
+          <div style={{ color: dim, fontSize: 14, fontFamily: sans }}>{phase.subtitle}</div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ color: dim, fontSize: 12, fontFamily: mono, textAlign: "right" }}>
+          <div style={{ color: dim, fontSize: 13, fontFamily: mono, textAlign: "right" }}>
             {doneCount}/{allTasks.length}
-            {phase.hours > 0 && <span style={{ display: "block", fontSize: 10, opacity: 0.6 }}>~{phase.hours}h</span>}
+            {phase.hours > 0 && <span style={{ display: "block", fontSize: 11, opacity: 0.7 }}>~{phase.hours}h</span>}
           </div>
           <ProgressRing percent={percent} color={phase.color} />
           <span style={{ color: dim, fontSize: 18, transform: isOpen ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }}>{"\u25BE"}</span>
@@ -245,12 +245,12 @@ function PhaseCard({ phase, progress, notes, onToggleTask, onNoteChange, isOpen,
       </div>
       {isOpen && (
         <div style={{ padding: "0 24px 24px" }}>
-          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 13, fontFamily: sans, lineHeight: 1.6, marginBottom: 20, paddingBottom: 16, borderBottom: `1px solid ${cardBorder}` }}>
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, fontFamily: sans, lineHeight: 1.6, marginBottom: 20, paddingBottom: 16, borderBottom: `1px solid ${cardBorder}` }}>
             {phase.description}
           </p>
           {phase.modules.map((mod) => (
             <div key={mod.name} style={{ marginBottom: 20 }}>
-              <div style={{ color: phase.color, fontSize: 11, fontFamily: mono, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8, opacity: 0.7 }}>{mod.name}</div>
+              <div style={{ color: phase.color, fontSize: 12, fontFamily: mono, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8, opacity: 0.8 }}>{mod.name}</div>
               {mod.tasks.map((task) => (
                 <TaskItem key={task.id} task={task} done={!!progress[task.id]} onToggle={() => onToggleTask(task.id)}
                   note={notes[task.id] || ""} onNoteChange={onNoteChange} />
@@ -271,8 +271,8 @@ function NavTab({ label, icon, active, onClick }) {
       padding: "10px 0", background: "transparent", border: "none",
       color: active ? accent : dimmer, cursor: "pointer", transition: "color 0.2s",
     }}>
-      <span style={{ fontSize: 18 }}>{icon}</span>
-      <span style={{ fontSize: 9, fontFamily: mono, letterSpacing: "0.1em" }}>{label}</span>
+      <span style={{ fontSize: 20 }}>{icon}</span>
+      <span style={{ fontSize: 11, fontFamily: mono, letterSpacing: "0.1em" }}>{label}</span>
     </button>
   );
 }
@@ -319,7 +319,7 @@ function Dashboard({ user, signOut, isGuest }) {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0a0a12", color: "#fff", fontFamily: sans }}>
+    <div style={{ minHeight: "100vh", background: "#0a0a12", color: "#fff", fontFamily: sans, maxWidth: 960, margin: "0 auto" }}>
       {/* Scan line */}
       <div style={{
         position: "fixed", top: 0, left: 0, right: 0, height: 2,
@@ -331,9 +331,9 @@ function Dashboard({ user, signOut, isGuest }) {
       {isGuest && (
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-          padding: "8px 16px", background: "rgba(255,165,0,0.08)",
-          borderBottom: "1px solid rgba(255,165,0,0.2)",
-          fontSize: 11, fontFamily: mono, color: "#ffa500", letterSpacing: "0.05em",
+          padding: "10px 16px", background: "rgba(255,165,0,0.1)",
+          borderBottom: "1px solid rgba(255,165,0,0.25)",
+          fontSize: 13, fontFamily: mono, color: "#ffa500", letterSpacing: "0.05em",
         }}>
           <span style={{ opacity: 0.7 }}>GUEST MODE</span>
           <span style={{ opacity: 0.4 }}>—</span>
@@ -349,20 +349,20 @@ function Dashboard({ user, signOut, isGuest }) {
         }} />
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
           <div>
-            <div style={{ fontSize: 10, fontFamily: mono, color: accent + "66", letterSpacing: "0.2em", marginBottom: 8 }}>
+            <div style={{ fontSize: 12, fontFamily: mono, color: accent + "88", letterSpacing: "0.2em", marginBottom: 8 }}>
               SYSTEM://CYBER-COMMAND
             </div>
-            <h1 style={{ fontSize: 24, fontFamily: mono, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 4 }}>
+            <h1 style={{ fontSize: 28, fontFamily: mono, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 4 }}>
               <span style={{ color: accent }}>CYBER</span>
-              <span style={{ color: "rgba(255,255,255,0.7)" }}> COMMAND</span>
+              <span style={{ color: "rgba(255,255,255,0.85)" }}> COMMAND</span>
             </h1>
           </div>
           <button onClick={signOut} style={{
-            background: "transparent", border: `1px solid ${dimmer}`, borderRadius: 6,
-            color: dim, fontSize: 10, fontFamily: mono, padding: "6px 12px", cursor: "pointer",
+            background: "transparent", border: `1px solid ${dimmer}`, borderRadius: 8,
+            color: dim, fontSize: 12, fontFamily: mono, padding: "8px 14px", cursor: "pointer",
           }}>{isGuest ? "SIGN IN" : "SIGN OUT"}</button>
         </div>
-        <p style={{ color: dim, fontSize: 12, fontFamily: mono, marginTop: 4 }}>
+        <p style={{ color: dim, fontSize: 13, fontFamily: mono, marginTop: 4 }}>
           {isGuest ? "Guest operator" : user.email}
         </p>
       </header>
@@ -378,10 +378,10 @@ function Dashboard({ user, signOut, isGuest }) {
           { label: "PLANNED", value: `${totalHours}h`, sub: "curriculum" },
           { label: "LOGGED", value: `${(loggedSeconds/3600).toFixed(1)}h`, sub: "actual" },
         ].map((s) => (
-          <div key={s.label} style={{ padding: "14px 8px", background: "#0a0a12", textAlign: "center" }}>
-            <div style={{ fontSize: 9, fontFamily: mono, color: dimmer, letterSpacing: "0.15em", marginBottom: 3 }}>{s.label}</div>
-            <div style={{ fontSize: 18, fontFamily: mono, fontWeight: 700, color: accent }}>{s.value}</div>
-            <div style={{ fontSize: 10, color: dimmer, fontFamily: mono }}>{s.sub}</div>
+          <div key={s.label} style={{ padding: "16px 8px", background: "#0a0a12", textAlign: "center" }}>
+            <div style={{ fontSize: 11, fontFamily: mono, color: dimmer, letterSpacing: "0.15em", marginBottom: 4 }}>{s.label}</div>
+            <div style={{ fontSize: 22, fontFamily: mono, fontWeight: 700, color: accent }}>{s.value}</div>
+            <div style={{ fontSize: 11, color: dimmer, fontFamily: mono }}>{s.sub}</div>
           </div>
         ))}
       </div>
@@ -414,13 +414,13 @@ function Dashboard({ user, signOut, isGuest }) {
                 isOpen={!!openPhases[phase.id]} onToggleOpen={() => togglePhase(phase.id)} />
             ))}
             <div style={{ marginTop: 24, padding: 20, background: cardBg, border: `1px solid ${cardBorder}`, borderRadius: 12 }}>
-              <div style={{ fontSize: 11, fontFamily: mono, color: accent, letterSpacing: "0.15em", marginBottom: 12 }}>FREE PLATFORMS</div>
+              <div style={{ fontSize: 12, fontFamily: mono, color: accent, letterSpacing: "0.15em", marginBottom: 12 }}>FREE PLATFORMS</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {PLATFORMS.map((p) => (
                   <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
                     style={{
-                      padding: "6px 12px", background: "rgba(255,255,255,0.04)", border: `1px solid ${cardBorder}`,
-                      borderRadius: 6, color: "rgba(255,255,255,0.6)", fontSize: 12, fontFamily: mono, textDecoration: "none",
+                      padding: "8px 14px", background: "rgba(255,255,255,0.05)", border: `1px solid ${cardBorder}`,
+                      borderRadius: 8, color: "rgba(255,255,255,0.7)", fontSize: 13, fontFamily: mono, textDecoration: "none",
                     }}>{p.name}</a>
                 ))}
               </div>

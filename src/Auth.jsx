@@ -4,35 +4,35 @@ import { supabaseConfigured } from './supabaseClient';
 const mono = "'JetBrains Mono', monospace";
 const sans = "'Space Grotesk', sans-serif";
 const accent = "#00ffc8";
-const dim = "rgba(255,255,255,0.3)";
-const dimmer = "rgba(255,255,255,0.15)";
+const dim = "rgba(255,255,255,0.55)";
+const dimmer = "rgba(255,255,255,0.35)";
 
 const inputStyle = {
   width: "100%",
-  background: "rgba(255,255,255,0.04)",
-  border: `1px solid ${dimmer}`,
-  borderRadius: 6,
-  padding: "12px 14px",
+  background: "rgba(255,255,255,0.06)",
+  border: "1px solid rgba(255,255,255,0.2)",
+  borderRadius: 8,
+  padding: "14px 16px",
   color: "#fff",
-  fontSize: 14,
+  fontSize: 15,
   fontFamily: sans,
   outline: "none",
-  marginBottom: 12,
+  marginBottom: 14,
 };
 
 const btnPrimary = {
   width: "100%",
-  padding: "12px 0",
+  padding: "14px 0",
   background: accent + "18",
   border: `1px solid ${accent}50`,
-  borderRadius: 6,
+  borderRadius: 8,
   color: accent,
-  fontSize: 13,
+  fontSize: 14,
   fontFamily: mono,
   fontWeight: 700,
   cursor: "pointer",
   letterSpacing: "0.08em",
-  marginBottom: 12,
+  marginBottom: 14,
 };
 
 export default function Auth({ onAuth }) {
@@ -78,17 +78,17 @@ export default function Auth({ onAuth }) {
       justifyContent: "center",
       padding: 24,
     }}>
-      <div style={{ width: "100%", maxWidth: 380 }}>
+      <div style={{ width: "100%", maxWidth: 440 }}>
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <div style={{ fontSize: 10, fontFamily: mono, color: accent + "66", letterSpacing: "0.2em", marginBottom: 12 }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ fontSize: 12, fontFamily: mono, color: accent + "88", letterSpacing: "0.2em", marginBottom: 14 }}>
             SYSTEM://AUTHENTICATE
           </div>
-          <h1 style={{ fontSize: 24, fontFamily: mono, fontWeight: 800, lineHeight: 1.2 }}>
+          <h1 style={{ fontSize: 32, fontFamily: mono, fontWeight: 800, lineHeight: 1.2 }}>
             <span style={{ color: accent }}>CYBER</span>
-            <span style={{ color: "rgba(255,255,255,0.7)" }}> COMMAND</span>
+            <span style={{ color: "rgba(255,255,255,0.85)" }}> COMMAND</span>
           </h1>
-          <p style={{ color: dim, fontSize: 12, fontFamily: mono, marginTop: 8 }}>
+          <p style={{ color: dim, fontSize: 14, fontFamily: mono, marginTop: 10 }}>
             {mode === "login" && "Log in to sync your progress"}
             {mode === "signup" && "Create your operator account"}
             {mode === "reset" && "Reset your access credentials"}
@@ -98,20 +98,20 @@ export default function Auth({ onAuth }) {
         {/* Form — only show when Supabase is configured */}
         {supabaseConfigured && (
           <div style={{
-            background: "rgba(255,255,255,0.02)",
-            border: "1px solid rgba(255,255,255,0.06)",
-            borderRadius: 12,
-            padding: 24,
+            background: "rgba(255,255,255,0.03)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: 14,
+            padding: 28,
           }}>
             {/* Google OAuth */}
             {mode !== "reset" && (
               <>
                 <button onClick={() => { setError(""); onAuth.signInWithGoogle(); }} style={{
-                  width: "100%", padding: "12px 0", background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.12)", borderRadius: 6, color: "#fff",
-                  fontSize: 13, fontFamily: sans, fontWeight: 600, cursor: "pointer",
+                  width: "100%", padding: "14px 0", background: "rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(255,255,255,0.18)", borderRadius: 8, color: "#fff",
+                  fontSize: 15, fontFamily: sans, fontWeight: 600, cursor: "pointer",
                   display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
-                  marginBottom: 16,
+                  marginBottom: 18,
                 }}>
                   <svg width="18" height="18" viewBox="0 0 24 24">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
@@ -122,11 +122,11 @@ export default function Auth({ onAuth }) {
                   Continue with Google
                 </button>
                 <div style={{
-                  display: "flex", alignItems: "center", gap: 12, marginBottom: 16,
+                  display: "flex", alignItems: "center", gap: 12, marginBottom: 18,
                 }}>
-                  <div style={{ flex: 1, height: 1, background: dimmer }} />
-                  <span style={{ fontSize: 10, fontFamily: mono, color: dimmer, letterSpacing: "0.1em" }}>OR</span>
-                  <div style={{ flex: 1, height: 1, background: dimmer }} />
+                  <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.15)" }} />
+                  <span style={{ fontSize: 11, fontFamily: mono, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>OR</span>
+                  <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.15)" }} />
                 </div>
               </>
             )}
@@ -161,12 +161,12 @@ export default function Auth({ onAuth }) {
             {error && (
               <div style={{
                 color: "#ff2d6b",
-                fontSize: 12,
+                fontSize: 13,
                 fontFamily: mono,
-                padding: "8px 12px",
-                background: "rgba(255,45,107,0.08)",
-                borderRadius: 6,
-                marginBottom: 12,
+                padding: "10px 14px",
+                background: "rgba(255,45,107,0.1)",
+                borderRadius: 8,
+                marginBottom: 14,
               }}>
                 {error}
               </div>
@@ -175,12 +175,12 @@ export default function Auth({ onAuth }) {
             {message && (
               <div style={{
                 color: accent,
-                fontSize: 12,
+                fontSize: 13,
                 fontFamily: mono,
-                padding: "8px 12px",
-                background: accent + "10",
-                borderRadius: 6,
-                marginBottom: 12,
+                padding: "10px 14px",
+                background: accent + "14",
+                borderRadius: 8,
+                marginBottom: 14,
               }}>
                 {message}
               </div>
@@ -198,23 +198,23 @@ export default function Auth({ onAuth }) {
             </button>
 
             {/* Mode switching */}
-            <div style={{ textAlign: "center", fontSize: 12, fontFamily: mono }}>
+            <div style={{ textAlign: "center", fontSize: 13, fontFamily: mono }}>
               {mode === "login" && (
                 <>
                   <button onClick={() => { setMode("signup"); setError(""); setMessage(""); }}
-                    style={{ background: "none", border: "none", color: dim, cursor: "pointer", fontFamily: mono, fontSize: 12 }}>
+                    style={{ background: "none", border: "none", color: dim, cursor: "pointer", fontFamily: mono, fontSize: 13 }}>
                     Create account
                   </button>
                   <span style={{ color: dimmer, margin: "0 8px" }}>|</span>
                   <button onClick={() => { setMode("reset"); setError(""); setMessage(""); }}
-                    style={{ background: "none", border: "none", color: dim, cursor: "pointer", fontFamily: mono, fontSize: 12 }}>
+                    style={{ background: "none", border: "none", color: dim, cursor: "pointer", fontFamily: mono, fontSize: 13 }}>
                     Forgot password
                   </button>
                 </>
               )}
               {(mode === "signup" || mode === "reset") && (
                 <button onClick={() => { setMode("login"); setError(""); setMessage(""); }}
-                  style={{ background: "none", border: "none", color: dim, cursor: "pointer", fontFamily: mono, fontSize: 12 }}>
+                  style={{ background: "none", border: "none", color: dim, cursor: "pointer", fontFamily: mono, fontSize: 13 }}>
                   Back to login
                 </button>
               )}
@@ -226,15 +226,15 @@ export default function Auth({ onAuth }) {
         <div style={{ textAlign: "center", marginTop: supabaseConfigured ? 24 : 0 }}>
           <button onClick={onAuth.continueAsGuest} style={
             supabaseConfigured
-              ? { background: "none", border: "none", color: dimmer, cursor: "pointer", fontFamily: mono, fontSize: 11, letterSpacing: "0.05em", padding: "8px 16px", transition: "color 0.2s" }
+              ? { background: "none", border: "none", color: "rgba(255,255,255,0.4)", cursor: "pointer", fontFamily: mono, fontSize: 13, letterSpacing: "0.05em", padding: "10px 16px", transition: "color 0.2s" }
               : { ...btnPrimary, marginBottom: 8 }
           }
-            onMouseEnter={(e) => { if (supabaseConfigured) e.target.style.color = dim; }}
-            onMouseLeave={(e) => { if (supabaseConfigured) e.target.style.color = dimmer; }}
+            onMouseEnter={(e) => { if (supabaseConfigured) e.target.style.color = "rgba(255,255,255,0.7)"; }}
+            onMouseLeave={(e) => { if (supabaseConfigured) e.target.style.color = "rgba(255,255,255,0.4)"; }}
           >
             {supabaseConfigured ? "Continue as guest" : "ENTER COMMAND CENTER"}
           </button>
-          <p style={{ color: dimmer, fontSize: 10, fontFamily: mono, marginTop: 6, opacity: 0.6 }}>
+          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, fontFamily: mono, marginTop: 8 }}>
             Progress saved locally only — won't sync across devices
           </p>
         </div>
