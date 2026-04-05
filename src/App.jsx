@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth, useProgress, useNotes, useSessions } from './hooks';
+import { supabaseConfigured } from './supabaseClient';
 import { PHASES, PLATFORMS } from './data';
 import Auth from './Auth';
 
@@ -331,13 +332,13 @@ function Dashboard({ user, signOut, isGuest }) {
       {isGuest && (
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-          padding: "10px 16px", background: "rgba(255,165,0,0.1)",
-          borderBottom: "1px solid rgba(255,165,0,0.25)",
-          fontSize: 13, fontFamily: mono, color: "#ffa500", letterSpacing: "0.05em",
+          padding: "10px 16px", background: "rgba(0,255,200,0.06)",
+          borderBottom: "1px solid rgba(0,255,200,0.15)",
+          fontSize: 13, fontFamily: mono, color: accent, letterSpacing: "0.05em",
         }}>
-          <span style={{ opacity: 0.7 }}>GUEST MODE</span>
-          <span style={{ opacity: 0.4 }}>—</span>
-          <span style={{ opacity: 0.5 }}>progress saved locally only</span>
+          <span style={{ opacity: 0.9 }}>GUEST MODE</span>
+          <span style={{ opacity: 0.3 }}>|</span>
+          <span style={{ opacity: 0.5 }}>progress saved in this browser</span>
         </div>
       )}
 
@@ -446,6 +447,12 @@ function Dashboard({ user, signOut, isGuest }) {
 /* ── App Root ── */
 export default function App() {
   const auth = useAuth();
+
+  // No Supabase? Skip auth entirely — straight into guest mode
+  if (!supabaseConfigured) {
+    const guestUser = { id: "guest", email: "guest" };
+    return <Dashboard user={guestUser} signOut={() => {}} isGuest={true} />;
+  }
 
   if (auth.loading) {
     return (
