@@ -16,6 +16,11 @@ Track 49 tasks across 6 phases (240+ hours). Stats update in real-time — progr
 
 ![Dashboard](screenshots/02-dashboard.png)
 
+### Task Tracking
+Expand any phase to see modules and tasks. Check off completed work, open external lab links, and attach notes.
+
+![Tasks](screenshots/05-tasks.png)
+
 ### Study Timer
 Start/pause/stop timer with session labels. Completed sessions log to your training history with daily breakdowns, cumulative hours, and streak tracking.
 
