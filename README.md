@@ -7,16 +7,24 @@ A self-directed cybersecurity training platform with progress tracking, study ti
 ## Screenshots
 
 ### Login & Guest Access
-> Google OAuth, email/password, or skip straight to guest mode. Guest progress saves to your browser automatically.
+Google OAuth, email/password, or skip straight to guest mode. Guest progress saves to your browser automatically.
+
+![Login](screenshots/01-login.png)
 
 ### Dashboard
-> Track 49 tasks across 6 phases (240+ hours). Stats update in real-time — progress percentage, tasks completed, planned hours, and logged study time.
+Track 49 tasks across 6 phases (240+ hours). Stats update in real-time — progress percentage, tasks completed, planned hours, and logged study time.
 
-### Task Tracking
-> Expand any phase to see modules and tasks. Check off completed work, open external lab links (TryHackMe, HackTheBox, OverTheWire), and attach notes with commands, flags, or findings.
+![Dashboard](screenshots/02-dashboard.png)
 
 ### Study Timer
-> Start/pause/stop timer with session labels. Completed sessions log to your training history with daily breakdowns, cumulative hours, and streak tracking.
+Start/pause/stop timer with session labels. Completed sessions log to your training history with daily breakdowns, cumulative hours, and streak tracking.
+
+![Study Timer](screenshots/03-timer.png)
+
+### Training Log
+Daily breakdown of study sessions with dates, labels, durations, and streak counter.
+
+![Training Log](screenshots/04-training-log.png)
 
 ## Quick Start
 
