@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a12"/>
+  <!-- Subtle grid -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <!-- Glow -->
+  <ellipse cx="600" cy="315" rx="400" ry="200" fill="rgba(0,255,200,0.04)"/>
+  <!-- Shield icon -->
+  <g transform="translate(520, 140)">
+    <path d="M80 0 L160 40 V120 L80 160 L0 120 V40 Z" fill="none" stroke="#00ffc8" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="80" cy="72" r="18" fill="none" stroke="#00ffc8" stroke-width="2.5"/>
+    <path d="M80 90 L66 112 H94 L80 90Z" fill="#00ffc8" opacity="0.7"/>
+  </g>
+  <!-- Title -->
+  <text x="600" y="380" text-anchor="middle" font-family="monospace" font-size="56" font-weight="800" fill="#00ffc8" letter-spacing="4">CYBER COMMAND</text>
+  <text x="600" y="430" text-anchor="middle" font-family="monospace" font-size="24" fill="rgba(255,255,255,0.4)" letter-spacing="8">CENTER</text>
+  <!-- Subtitle -->
+  <text x="600" y="490" text-anchor="middle" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.3)">6 Phases  ·  240+ Hours  ·  Hands-on Cybersecurity Training</text>
+  <!-- Accent lines -->
+  <line x1="200" y1="540" x2="1000" y2="540" stroke="rgba(0,255,200,0.15)" stroke-width="1"/>
+  <line x1="350" y1="560" x2="850" y2="560" stroke="rgba(0,255,200,0.08)" stroke-width="1"/>
+</svg>
